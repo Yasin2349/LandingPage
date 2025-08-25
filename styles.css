@@ -2,7 +2,10 @@
         html {
             scroll-behavior: smooth;
         }
-
+        nav{
+            margin: auto;
+            padding-left: 150px;
+        }
         /* استایل‌های کلی */
         body {
             font-family: 'Vazirmatn', sans-serif;
@@ -13,6 +16,17 @@
             line-height: 1.8;
             direction: rtl;
             overflow-x: hidden;
+        }
+        .li-register{
+            padding-right: 10px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            padding-left: 10px;
+            color: white;
+            background-color: #0088cc;
+            border-radius: 5px;
+            list-style: none;
+            margin-right: 30px;
         }
         h1, h2, h3 {
             color: #1e3a8a;
@@ -687,20 +701,47 @@
             color: #60a5fa;
         }
         .social-icons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 15px;
+        text-align: center; /* وسط‌چین کردن تیتر و آیکن‌ها */
         }
+
+        .social-icons h6 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: white;
+}
+
+.social-icons .icons {
+  display: flex;
+  justify-content: center; /* آیکن‌ها کنار هم و وسط */
+  gap: 20px; /* فاصله بین آیکن‌ها */
+}
+
+
         .social-icons a {
-            color: white;
-            font-size: 20px;
-            transition: transform 0.3s ease, color 0.3s ease;
+          font-size: 30px;
+          color: white; /* رنگ پیش‌فرض خاکستری */
+          transition: color 0.3s ease, transform 0.3s ease;
         }
+
         .social-icons a:hover {
-            color: #60a5fa;
-            transform: scale(1.2);
+          transform: scale(1.2);
         }
+
+        /* تلگرام */
+        .social-icons a[href*="t.me"]:hover i {
+          color: #0088cc;
+        }
+
+        /* اینستاگرام */
+        .social-icons a[href*="instagram.com"]:hover i {
+          background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .social-icons a[href*="eitaa.com"]:hover i {
+            color: orange;
+        }   
         footer p {
             margin-top: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -774,3 +815,27 @@
                 padding: 60px 20px;
             }
         }
+        /* استایل دکمه‌های ناوبری اسلایدر */
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.prev-slide, .next-slide {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.prev-slide:hover, .next-slide:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
