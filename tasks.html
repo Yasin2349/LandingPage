@@ -18,23 +18,37 @@
             font-family: 'Vazirmatn', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9fafb;
-            color: #1e293b;
             line-height: 1.8;
             direction: rtl;
             overflow-x: hidden;
+            background-color: #121212; /* دارک پیش‌فرض */
+            color: #e0e0e0;
+            transition: background-color 0.5s, color 0.5s;
+            position: relative;
+        }
+        body.light {
+            background-color: #f9fafb;
+            color: #1e293b;
         }
         h1, h2, h3 {
-            color: #1e3a8a;
             font-weight: 700;
+        }
+        body.dark h1, body.dark h2, body.dark h3 {
+            color: #ffd700; /* طلایی برای دارک */
+        }
+        body.light h1, body.light h2, body.light h3 {
+            color: #1e3a8a;
         }
         p {
             font-weight: 300;
+        }
+        body.dark p {
+            color: #b3b3b3;
+        }
+        body.light p {
             color: #475569;
         }
         button {
-            background: linear-gradient(135deg, #3b82f6, #60a5fa);
-            color: white;
             border: none;
             padding: 12px 25px;
             border-radius: 10px;
@@ -42,11 +56,26 @@
             font-size: 16px;
             font-weight: 500;
             transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        body.dark button {
+            background: linear-gradient(135deg, #ffd700, #ffcc00);
+            color: #121212;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        }
+        body.light button {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
         button:hover {
-            background: linear-gradient(135deg, #2563eb, #3b82f6);
             transform: translateY(-2px);
+        }
+        body.dark button:hover {
+            background: linear-gradient(135deg, #ffcc00, #ffd700);
+            box-shadow: 0 6px 15px rgba(255, 215, 0, 0.5);
+        }
+        body.light button:hover {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
             box-shadow: 0 6px 15px rgba(59, 130, 246, 0.5);
         }
         button.disabled {
@@ -56,7 +85,6 @@
         }
         input {
             padding: 10px;
-            border: 1px solid #e2e8f0;
             border-radius: 8px;
             font-size: 16px;
             font-family: 'Vazirmatn', sans-serif;
@@ -64,10 +92,26 @@
             width: 100%;
             box-sizing: border-box;
         }
+        body.dark input {
+            background: #1e1e1e;
+            color: #e0e0e0;
+            border: 1px solid #ffd700;
+        }
+        body.light input {
+            background: white;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+        }
         input:focus {
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+            outline: none;
+        }
+        body.light input:focus {
             border-color: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-            outline: none;
+        }
+        body.dark input:focus {
+            border-color: #ffd700;
         }
         /* انیمیشن‌ها */
         @keyframes fadeInUp {
@@ -78,12 +122,76 @@
             0% { transform: translateY(0) rotate(0deg); opacity: 1; }
             100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
+        @keyframes galaxyPulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.5; }
+        }
+        @keyframes leaderboardLoad {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes leaderboardItemHover {
+            0% { transform: scale(1); box-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+            100% { transform: scale(1.05); box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }
+        }
+        @keyframes starTwinkle {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        @keyframes starMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
         .fade-in-up {
             animation: fadeInUp 1.2s ease-out;
         }
+        /* بکگراند کهکشانی با ستاره‌های متحرک برای دارک */
+        body.dark::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            z-index: -2;
+        }
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: starTwinkle 2s infinite ease-in-out, starMove linear infinite;
+        }
+        .star.small {
+            width: 1px;
+            height: 1px;
+            animation-duration: 10s, 20s; /* توینک و حرکت */
+        }
+        .star.medium {
+            width: 2px;
+            height: 2px;
+            animation-duration: 1.5s, 15s;
+        }
+        .star.large {
+            width: 3px;
+            height: 3px;
+            animation-duration: 1s, 10s;
+        }
         /* هدر */
         header {
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             padding: 20px 40px;
             display: flex;
             justify-content: space-between;
@@ -92,12 +200,24 @@
             top: 0;
             z-index: 1000;
             transition: padding 0.4s, background 0.4s, box-shadow 0.4s;
+        }
+        body.dark header {
+            background: linear-gradient(135deg, #000000, #1e1e1e);
+            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.1);
+        }
+        body.light header {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         header.scrolled {
             padding: 10px 40px;
-            background: #1e3a8a;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        body.dark header.scrolled {
+            background: #000000;
+        }
+        body.light header.scrolled {
+            background: #1e3a8a;
         }
         .logo {
             display: flex;
@@ -109,9 +229,14 @@
         }
         .logo span {
             font-size: 28px;
-            color: white;
             font-weight: 700;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        body.dark .logo span {
+            color: #ffd700;
+        }
+        body.light .logo span {
+            color: white;
         }
         nav {
             display: flex;
@@ -125,129 +250,308 @@
             padding: 0;
         }
         nav ul li a {
-            color: white;
             font-size: 16px;
             font-weight: 500;
             transition: color 0.3s, transform 0.3s;
         }
+        body.dark nav ul li a {
+            color: #ffd700;
+        }
+        body.light nav ul li a {
+            color: white;
+        }
         nav ul li a:hover {
-            color: #60a5fa;
             transform: translateY(-2px);
         }
-        /* بخش اصلی تسک‌ها */
-        .tasks-section {
-            padding: 80px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
+        body.dark nav ul li a:hover {
+            color: #ffcc00;
         }
-        .tasks-header {
+        body.light nav ul li a:hover {
+            color: #60a5fa;
+        }
+        /* دکمه سوئیچ مود */
+        .mode-switch {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            margin-left: 20px;
+        }
+        /* بخش مقدمه */
+        .intro-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 40px;
+            position: relative;
+        }
+        .intro-section h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .intro-section p {
+            font-size: 24px;
             margin-bottom: 40px;
         }
-        .tasks-header h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
+        .start-btn {
+            font-size: 20px;
+            padding: 15px 40px;
         }
-        .tasks-header p {
-            font-size: 18px;
+        /* بخش لیدربورد - بخشی از جریان صفحه، بعد از پیشرفت */
+        .leaderboard-section {
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            animation: leaderboardLoad 1.5s ease-out;
+        }
+        .leaderboard {
+            background: linear-gradient(135deg, #000033, #000066); /* تم کهکشانی */
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: galaxyPulse 5s infinite;
+            max-height: 400px; /* اندازه ثابت برای جلوگیری از overflow */
+            overflow-y: hidden;
+        }
+        .leaderboard::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+            animation: rotateGalaxy 20s linear infinite;
+        }
+        @keyframes rotateGalaxy {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .leaderboard h3 {
+            font-size: 28px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+        .leaderboard ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .leaderboard li {
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            color: #ffffff;
+            transition: transform 0.3s, box-shadow 0.3s;
+            white-space: nowrap; /* جلوگیری از شکستن خط */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .leaderboard li:hover {
+            animation: leaderboardItemHover 0.5s forwards;
+        }
+        .leaderboard-note {
+            font-size: 12px;
+            color: #808080;
+            margin-top: 20px;
+            opacity: 0.7;
+        }
+        /* بخش پیشرفت */
+        .progress-section {
+            padding: 40px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
         .progress-container {
-            background: #e0e7ff;
+            background: rgba(255,255,255,0.1);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+        }
+        body.light .progress-container {
+            background: #e0e7ff;
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
         }
         .progress-bar {
-            background: #f1f5f9;
+            background: rgba(255,255,255,0.2);
             border-radius: 20px;
             height: 20px;
             overflow: hidden;
             margin: 10px 0;
         }
+        body.light .progress-bar {
+            background: #f1f5f9;
+        }
         .progress-fill {
-            background: linear-gradient(135deg, #3b82f6, #60a5fa);
             height: 100%;
             width: 0;
             transition: width 0.5s ease;
         }
+        body.dark .progress-fill {
+            background: linear-gradient(135deg, #ffd700, #ffcc00);
+        }
+        body.light .progress-fill {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+        }
         .points-counter {
             font-size: 24px;
             font-weight: 700;
+        }
+        body.dark .points-counter {
+            color: #ffd700;
+        }
+        body.light .points-counter {
             color: #1e3a8a;
         }
-        .tasks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        /* بخش تسک‌ها - با اسنپ اسکرول */
+        .tasks-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            scroll-snap-type: y mandatory; /* اسنپ اسکرول عمودی */
+            overflow-y: auto;
+            height: calc(100vh - 100px); /* تنظیم ارتفاع برای اسکرول */
+            max-width: 900px;
+            margin: 0 auto;
+        }.tasks-section::-webkit-scrollbar{
+            width: 0;
         }
-        .task-card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .task-frame {
+            scroll-snap-align: center; /* اسنپ به مرکز */
+            min-height: 80vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 40px;
+            box-sizing: border-box;
             position: relative;
             overflow: hidden;
+            transition: background 0.5s;
+        }
+        body.dark .task-frame {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(0,0,0,0.3));
+            border-bottom: 2px dashed #ffd700;
+        }
+        body.light .task-frame {
+            background: linear-gradient(135deg, #ffffff, #f9fafb);
+            border-bottom: 2px dashed #e2e8f0;
+        }
+        .task-card {
+            background: transparent;
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s;
+            position: relative;
+            border: 3px solid transparent;
+        }
+        body.dark .task-card {
+            border: 3px solid #ffd700;
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
+        }
+        body.light .task-card {
+            background: white;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+            border: 3px solid #3b82f6;
         }
         .task-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.1);
+            transform: scale(1.02);
+        }
+        body.dark .task-card:hover {
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+            border-color: #ffcc00;
+        }
+        body.light .task-card:hover {
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+            border-color: #2563eb;
         }
         .task-card.completed {
-            background: #d1fae5;
+            background: rgba(209, 250, 229, 0.1);
+        }
+        body.dark .task-card.completed {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: #00ff00;
         }
         .task-title {
-            font-size: 20px;
-            margin-bottom: 10px;
+            font-size: 32px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .task-title i {
+        body.dark .task-title i {
+            color: #ffd700;
+            font-size: 40px;
+        }
+        body.light .task-title i {
             color: #3b82f6;
+            font-size: 40px;
         }
         .task-desc {
-            font-size: 16px;
-            margin-bottom: 15px;
+            font-size: 20px;
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+        }
+        body.light .task-desc {
+            background: rgba(0,0,0,0.05);
         }
         .task-points {
-            font-size: 14px;
+            font-size: 18px;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        body.dark .task-points {
+            color: #ffd700;
+        }
+        body.light .task-points {
             color: #3b82f6;
-            margin-bottom: 15px;
         }
         .task-form {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-        }
-        .task-form input {
-            margin-bottom: 10px;
-        }
-        .task-form button {
-            width: 100%;
+            gap: 20px;
+            max-width: 400px;
+            margin: 0 auto;
         }
         .complete-btn {
             width: 100%;
-        }
-        .complete-btn.disabled {
-            background: #9ca3af;
-            cursor: not-allowed;
+            font-size: 18px;
+            padding: 15px;
         }
         .badge {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
             background: #f59e0b;
             color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 16px;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity 0.3s, top 0.3s;
         }
         .task-card.completed .badge {
             opacity: 1;
+            top: -30px;
         }
         /* انیمیشن کانفتی */
         .confetti {
@@ -258,60 +562,67 @@
             border-radius: 50%;
             animation: confetti 1s ease-out forwards;
         }
-        /* لیدربورد */
-        .leaderboard {
-            margin-top: 60px;
-            background: #f1f5f9;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        .leaderboard ul {
-            list-style: none;
-            padding: 0;
-        }
-        .leaderboard li {
-            padding: 10px;
-            border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            justify-content: space-between;
-            font-size: 16px;
-        }
         /* ریسپانسیو */
         @media (max-width: 768px) {
-            .tasks-section {
+            .intro-section, .task-frame {
                 padding: 60px 20px;
             }
-            .tasks-grid {
-                grid-template-columns: 1fr;
+            .task-card {
+                padding: 30px;
             }
-            .progress-container {
-                padding: 15px;
+            .intro-section h1 {
+                font-size: 36px;
             }
-            .tasks-header h1 {
+            .intro-section p {
+                font-size: 18px;
+            }
+            .leaderboard {
+                padding: 20px;
+                max-height: 300px;
+            }
+            .leaderboard h3 {
+                font-size: 24px;
+            }
+            .leaderboard li {
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+            .task-title {
                 font-size: 28px;
             }
-            .tasks-header p {
-                font-size: 16px;
+            .task-desc {
+                font-size: 18px;
             }
         }
         @media (max-width: 480px) {
             .task-card {
-                padding: 15px;
+                padding: 20px;
             }
             .task-title {
-                font-size: 18px;
+                font-size: 24px;
             }
             .task-desc {
-                font-size: 14px;
+                font-size: 16px;
             }
             .task-points {
+                font-size: 14px;
+            }
+            .leaderboard {
+                padding: 15px;
+            }
+            .leaderboard h3 {
+                font-size: 20px;
+            }
+            .leaderboard li {
                 font-size: 12px;
+                padding: 8px 10px;
             }
         }
     </style>
 </head>
-<body>
+<body class="dark">
+    <div class="stars"></div> <!-- لایه ستاره‌ها -->
+
     <!-- هدر -->
     <header id="header">
         <div class="logo">
@@ -322,15 +633,21 @@
             <ul>
                 <li><a href="index.html">بازگشت به خانه</a></li>
             </ul>
+            <button class="mode-switch" onclick="toggleMode()">
+                <i class="fas fa-moon"></i> <!-- آیکون تغییر می‌کند -->
+            </button>
         </nav>
     </header>
 
-    <!-- بخش تسک‌ها -->
-    <section class="tasks-section fade-in-up">
-        <div class="tasks-header">
-            <h1>🎁 ایردراپ روزانه شیبا اینو</h1>
-            <p>تسک‌ها را تکمیل کنید و جوایز بگیرید! هر تسک امتیاز دارد و با تکمیل آن‌ها بج و جایزه بگیرید.</p>
-        </div>
+    <!-- بخش مقدمه -->
+    <section class="intro-section fade-in-up">
+        <h1>🎁 خوش آمدید به ایردراپ روزانه شیبا اینو</h1>
+        <p>تسک‌ها را تکمیل کنید و جوایز بگیرید! هر تسک امتیاز دارد و با تکمیل آن‌ها بج و جایزه بگیرید.</p>
+        <button class="start-btn" onclick="startTasks()">شروع</button>
+    </section>
+
+    <!-- بخش پیشرفت -->
+    <section class="progress-section" id="progress-section" style="display: none;">
         <div class="progress-container">
             <h3>پیشرفت شما</h3>
             <div class="progress-bar">
@@ -338,24 +655,76 @@
             </div>
             <div class="points-counter" id="points-counter">امتیاز فعلی: 0</div>
         </div>
-        <div class="tasks-grid" id="tasks-grid">
-            <!-- تسک‌ها به صورت دینامیک اضافه می‌شوند -->
-        </div>
+    </section>
+
+    <!-- بخش لیدربورد - بعد از پیشرفت -->
+    <section class="leaderboard-section" id="leaderboard-section" style="display: none;">
         <div class="leaderboard">
             <h3>لیدربورد</h3>
             <ul id="leaderboard-list">
                 <!-- آیتم‌های لیدربورد دینامیک -->
             </ul>
+            <p class="leaderboard-note">روزانه به 250 نفر اول شیبا داده میشود!</p>
         </div>
     </section>
 
+    <!-- بخش تسک‌ها -->
+    <section class="tasks-section" id="tasks-section" style="display: none;">
+        <!-- تسک‌ها به صورت دینامیک اضافه می‌شوند -->
+    </section>
+
     <script>
+        // ایجاد ستاره‌های متحرک
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            const numStars = 200; // تعداد ستاره‌ها
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star ' + (Math.random() < 0.3 ? 'small' : Math.random() < 0.6 ? 'medium' : 'large');
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 5}s, ${Math.random() * 10}s`; // تاخیر برای توینک و حرکت
+                star.style.animationDuration = `${2 + Math.random() * 3}s, ${10 + Math.random() * 20}s`;
+                starsContainer.appendChild(star);
+            }
+        }
+
         // تغییر هدر هنگام اسکرول
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
             if (window.scrollY > 150) header.classList.add('scrolled');
             else header.classList.remove('scrolled');
         });
+
+        // سوئیچ مود
+        function toggleMode() {
+            document.body.classList.toggle('dark');
+            document.body.classList.toggle('light');
+            const icon = document.querySelector('.mode-switch i');
+            const stars = document.querySelector('.stars');
+            if (document.body.classList.contains('dark')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                stars.style.display = 'block';
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                stars.style.display = 'none';
+            }
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        // شروع تسک‌ها
+        function startTasks() {
+            document.querySelector('.intro-section').style.display = 'none';
+            document.getElementById('progress-section').style.display = 'block';
+            document.getElementById('leaderboard-section').style.display = 'block';
+            document.getElementById('tasks-section').style.display = 'flex';
+            renderTasks();
+            updateLeaderboard();
+            // اسکرول نرم به پیشرفت
+            document.getElementById('progress-section').scrollIntoView({ behavior: 'smooth' });
+        }
 
         // داده‌های تسک‌ها
         const tasks = [
@@ -418,41 +787,43 @@
             localStorage.setItem(storageKey, JSON.stringify(updatedTasks));
         }
 
-        // رندر تسک‌ها
+        // رندر تسک‌ها به صورت قاب‌های کامل
         function renderTasks() {
-            const grid = document.getElementById('tasks-grid');
-            grid.innerHTML = '';
+            const section = document.getElementById('tasks-section');
+            section.innerHTML = '';
             const currentTasks = loadTasks();
 
             // چک فلگ referrer برای تسک ایردراپ (id:1)
             const fromGoogle = localStorage.getItem('from_google_search') === 'true';
-            const searchTask = currentTasks.find(t => t.id === 1);
 
-            currentTasks.forEach(task => {
-                const card = document.createElement('div');
-                card.className = `task-card fade-in-up ${task.completed ? 'completed' : ''}`;
+            currentTasks.forEach((task, index) => {
+                const frame = document.createElement('div');
+                frame.className = 'task-frame fade-in-up';
+                frame.id = `task-${task.id}`;
                 let taskContent = `
-                    <h3 class="task-title"><i class="fas ${task.id === 1 ? 'fa-gift' : task.id === 2 ? 'fa-user-check' : task.id === 3 ? 'fa-exchange-alt' : task.id === 4 ? 'fa-user-friends' : 'fa-trophy'}"></i>${task.title}</h3>
-                    <p class="task-desc">${task.desc}</p>
-                    <p class="task-points">امتیاز: ${task.points}</p>
+                    <div class="task-card ${task.completed ? 'completed' : ''}">
+                        <h3 class="task-title"><i class="fas ${task.id === 1 ? 'fa-gift' : task.id === 2 ? 'fa-user-check' : task.id === 3 ? 'fa-exchange-alt' : task.id === 4 ? 'fa-user-friends' : 'fa-trophy'}"></i>${task.title}</h3>
+                        <p class="task-desc">${task.desc}</p>
+                        <p class="task-points">امتیاز: ${task.points}</p>
                 `;
                 if (task.requiresCode && !task.completed) {
                     taskContent += `
                         <div class="task-form">
                             <input type="text" id="code-input-${task.id}" placeholder="کد را وارد کنید">
-                            <button onclick="submitCode(${task.id})">ارسال کد</button>
+                            <button onclick="submitCode(${task.id}, ${index})">ارسال کد</button>
                         </div>
                     `;
                 } else {
                     taskContent += `
-                        <button class="complete-btn ${task.completed ? 'disabled' : ''}" onclick="completeTask(${task.id})">
+                        <button class="complete-btn ${task.completed ? 'disabled' : ''}" onclick="completeTask(${task.id}, ${index})">
                             ${task.completed ? 'تکمیل شده' : 'تکمیل'}
                         </button>
                     `;
                 }
                 taskContent += `${task.completed ? '<span class="badge">بج دریافتی!</span>' : ''}`;
-                card.innerHTML = taskContent;
-                grid.appendChild(card);
+                taskContent += `</div>`;
+                frame.innerHTML = taskContent;
+                section.appendChild(frame);
             });
 
             // به‌روزرسانی پیشرفت
@@ -472,21 +843,28 @@
         }
 
         // تکمیل تسک دستی
-        function completeTask(id) {
+        function completeTask(id, index) {
             const currentTasks = loadTasks();
             const task = currentTasks.find(t => t.id === id);
             if (task && !task.completed && !task.requiresCode) {
                 task.completed = true;
                 saveTasks(currentTasks);
                 renderTasks();
-                showConfetti();
+                showConfetti(index);
                 checkBadges();
                 updateLeaderboard();
+                // اسکرول نرم به تسک بعدی
+                setTimeout(() => {
+                    const nextFrame = document.getElementById(`task-${id + 1}`);
+                    if (nextFrame) {
+                        nextFrame.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }, 1000);
             }
         }
 
         // ارسال کد برای تسک ایردراپ
-        function submitCode(id) {
+        function submitCode(id, index) {
             const currentTasks = loadTasks();
             const task = currentTasks.find(t => t.id === id);
             const codeInput = document.getElementById(`code-input-${id}`);
@@ -503,19 +881,27 @@
                     localStorage.removeItem('from_google_search'); // پاک کردن فلگ
                     saveTasks(currentTasks);
                     renderTasks();
-                    showConfetti();
+                    showConfetti(index);
                     checkBadges();
                     updateLeaderboard();
                     alert('تبریک! تسک با موفقیت تکمیل شد. حساب شما رأس ساعت ۲ بامداد شارژ خواهد شد.');
+                    // اسکرول نرم به تسک بعدی
+                    setTimeout(() => {
+                        const nextFrame = document.getElementById(`task-${id + 1}`);
+                        if (nextFrame) {
+                            nextFrame.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }, 1000);
                 } else {
                     alert('کد واردشده اشتباه است. کد درست: 50856495');
                 }
             }
         }
 
-        // انیمیشن کانفتی
-        function showConfetti() {
-            const section = document.querySelector('.tasks-section');
+        // انیمیشن کانفتی در قاب تسک
+        function showConfetti(index) {
+            const frames = document.querySelectorAll('.task-frame');
+            const section = frames[index];
             for (let i = 0; i < 50; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
@@ -550,6 +936,11 @@
         }
 
         // اولیه‌سازی
+        if (localStorage.getItem('theme') === 'light') {
+            toggleMode();
+        } else {
+            createStars();
+        }
         renderTasks();
         updateLeaderboard();
     </script>
