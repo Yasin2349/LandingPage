@@ -13,7 +13,7 @@
 </head>
 <body>
     <!-- هدر -->
-    <header id="header">
+    <!-- <header id="header">
         <div class="logo">
             <a href="#home"><img src="xdgheader.png" alt="لوگو XDGBIT"></a>
             <span></span>
@@ -36,19 +36,41 @@
                     <i class="fas fa-times"></i> بستن
                 </li>
             </ul>
-            <a href="https://xdgbit.com/auth/register" target="_blank"><li class="li-register">ثبت نام</li></a>
+            <a href="https://xdgbit.com/auth/register" target="_blank" ><li class="li-register">ثبت نام</li></a>
         </nav>
-    </header>
+    </header> -->
 
     <!-- هیرو با اسلایدر تمام‌صفحه -->
     <section id="home" class="hero" style="background-color: rgb(3, 3, 53);">
         <div class="slider" id="hero-slider">
             <div class="slide s1 active">
-                <h1>جشن ۹ سالگی XDGBIT</h1>
-                <p>شروع یک رویداد هیجان‌انگیز با جوایز ویژه</p>
-                <button onclick="scrollToSection('services')">شرکت کنید</button>
+                <div class="row-shlide1">
+                    <div class="box-text1">
+                        <h1>جشنواره ۹ سالگی XDGBIT</h1>
+                        <p>جشن ۹ سال فعالیت موفق XDGBIT با ارائه جوایز ویژه، تخفیف‌ها و رویدادهای تعاملی برای قدردانی از جامعه بزرگمان.</p>
+                    </div>
+                    <img src="sh2.png" alt="" class="img_slide">
+                </div>
+                <div class="row-shlide1">
+                    <div class="box-text2">
+                        <h1>معامله بدون کار مزد!</h1>
+                        <p>جشن ۹ سال فعالیت موفق XDGBIT با ارائه جوایز ویژه، تخفیف‌ها و رویدادهای تعاملی برای قدردانی از جامعه بزرگمان.</p>
+                    </div>
+                    <div class="box-text2">
+                        <h1>جوایز ویژه!</h1>
+                        <p>جشن ۹ سال فعالیت موفق XDGBIT با ارائه جوایز ویژه، تخفیف‌ها و رویدادهای تعاملی برای قدردانی از جامعه بزرگمان.</p>
+                    </div>
+                    <div class="box-text2">
+                        <h1>مدت زمان محدود</h1>
+                        <p>جشن ۹ سال فعالیت موفق XDGBIT با ارائه جوایز ویژه، تخفیف‌ها و رویدادهای تعاملی برای قدردانی از جامعه بزرگمان.</p>
+                    </div>
+                </div>
+                
+                
+                
+                
             </div>
-            <div class="slide s2">
+            <!-- <div class="slide s2">
                 <h1>هدیه‌های شگفت‌انگیز</h1>
                 <p>هزاران توکن SHIB برای 250 نفر اول</p>
                 <button onclick="scrollToSection('services')">ثبت‌نام کنید</button>
@@ -57,9 +79,9 @@
                 <h1>معامله بدون کارمزد</h1>
                 <p>جفت‌ارزهای محبوب با تخفیف ویژه</p>
                 <button onclick="scrollToSection('services')">اطلاعات بیشتر</button>
-            </div>
+            </div> -->
         </div>
-        <div class="slider-controls">
+        <!-- <div class="slider-controls">
             <button class="prev-slide" onclick="showSlide(currentSlide - 1)"><i class="fas fa-chevron-right"></i></button>
             <button class="next-slide" onclick="showSlide(currentSlide + 1)"><i class="fas fa-chevron-left"></i></button>
         </div>
@@ -67,7 +89,7 @@
             <div class="dot active"></div>
             <div class="dot"></div>
             <div class="dot"></div>
-        </div>
+        </div> -->
     </section>
 
     <!-- درباره ما -->
@@ -292,39 +314,39 @@
         let currentSlide = 0;
         let isSliding = false;
 
-        function showSlide(index) {
-            if (isSliding) return;
-            isSliding = true;
+        // function showSlide(index) {
+        //     if (isSliding) return;
+        //     isSliding = true;
 
-            slides[currentSlide].classList.remove('active');
-            heroDots[currentSlide].classList.remove('active');
+        //     slides[currentSlide].classList.remove('active');
+        //     heroDots[currentSlide].classList.remove('active');
 
-            currentSlide = (index + slides.length) % slides.length;
+        //     currentSlide = (index + slides.length) % slides.length;
 
-            slides[currentSlide].classList.add('active');
-            heroDots[currentSlide].classList.add('active');
+        //     slides[currentSlide].classList.add('active');
+        //     heroDots[currentSlide].classList.add('active');
 
-            const slideContent = slides[currentSlide].querySelectorAll('h1, p, button');
-            slideContent.forEach(el => {
-                el.style.animation = 'none';
-                el.offsetHeight;
-                el.style.animation = null;
-            });
+        //     const slideContent = slides[currentSlide].querySelectorAll('h1, p, button');
+        //     slideContent.forEach(el => {
+        //         el.style.animation = 'none';
+        //         el.offsetHeight;
+        //         el.style.animation = null;
+        //     });
 
-            setTimeout(() => {
-                isSliding = false;
-            }, 800);
-        }
+        //     setTimeout(() => {
+        //         isSliding = false;
+        //     }, 800);
+        // }
 
-        heroDots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                if (i !== currentSlide) showSlide(i);
-            });
-        });
+        // heroDots.forEach((dot, i) => {
+        //     dot.addEventListener('click', () => {
+        //         if (i !== currentSlide) showSlide(i);
+        //     });
+        // });
 
-        setInterval(() => {
-            showSlide(currentSlide + 1);
-        }, 5000);
+        // setInterval(() => {
+        //     showSlide(currentSlide + 1);
+        // }, 5000);
 
         // کانتر آمار
         const numbers = document.querySelectorAll('.number');
@@ -383,6 +405,29 @@
                 console.log('کاربر از سرچ گوگل وارد شده');
             }
         });
+        const bg = document.querySelector('.slide.s1');
+        const bg1 = document.querySelector('.slide.s1');
+        const bg2 = document.querySelector('.slide.s1');
+
+        document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+
+        bg.style.backgroundPosition = `${x}% ${y}%`;
+        });
+        document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+
+        bg1.style.backgroundPosition = `${x}% ${y}%`;
+        });
+        document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+
+        bg2.style.backgroundPosition = `${x}% ${y}%`;
+        });
+
     </script>
 </body>
 </html>
