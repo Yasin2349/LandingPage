@@ -9,9 +9,22 @@
     <link rel="shortcut icon" href="xdgbit.png" sizes="32x32" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <button class="floating-menu-btn" onclick="toggleFloatingMenu()">
+        <i class="fas fa-bars"></i>
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="floating-bar-menu">
+        <ul>
+            <li><a href="/#"><i class="fas fa-angle-up"></i></a></li>
+            <li><a href="#about">درباره</a></li>
+            <li><a href="https://xdgbit.com/auth/register" target="_blank" alt="ثبت‌نام در صرافی ما">ثبت‌نام</a></li>
+            <li><a href="#partners">حامیان</a></li>
+        </ul>
+    </div>
     <!-- هدر -->
     <!-- <header id="header">
         <div class="logo">
@@ -41,30 +54,56 @@
     </header> -->
 
     <!-- هیرو با اسلایدر تمام‌صفحه -->
-    <section id="home" class="hero" style="background-color: rgb(3, 3, 53);">
+    <section id="home" class="hero" style="margin-bottom: 200px;">
         <div class="slider" id="hero-slider">
             <div class="slide s1 active">
-                <div class="row-shlide1">
-                    <div class="box-text1">
-                        <h1>جشنواره ۹ سالگی XDGBIT</h1>
-                        <p>جشن ۹ سال فعالیت موفق XDGBIT با ارائه جوایز ویژه، تخفیف‌ها و رویدادهای تعاملی برای قدردانی از جامعه بزرگمان.</p>
+                <div class="box_container">
+                    <div class="col1">
+                        <div class="display">
+                            <div class="display2">
+                                <h2 class="title_container">
+                                جشنواره ۹ سالگی XDGBIT: شانس برنده شدن جوایز بزرگ!
+                                </h2>
+                                <h2 class="text_container">
+                                    به جشن ۹ سال فعالیت موفق XDGBIT بپیوندید! با ثبت‌نام، معامله و شرکت در مسابقات، از جوایز ویژه مثل توکن‌های SHIB و معاملات بدون کارمزد بهره‌مند شوید. این فرصت محدود را از دست ندهید!
+                                </h2>
+                            </div>
+                            <img src="chatr.png" alt="" class="img-container2">
+                        </div>
+                        
+                        <div class="row-box-container">
+                            <div class="box-container">                
+                                <a href="#about">
+                                <i class="fas fa-gift"></i>
+                                <h3>جوایز ارزنده برای شما</h3>
+                                <p class="p-box-container">در جشنواره ۹ سالگی XDGBIT، با ثبت‌نام و شرکت در رویدادها، شانس برنده شدن توکن‌های SHIB و جوایز متنوع دیگر را برای ۲۵۰ نفر اول به دست آورید.</p>
+                                <i class="fas fa-chevron-down"></i>
+                                </a>
+                            </div>
+                            <div class="box-container">
+                                <a href="#about">
+                                <i class="fas fa-clock"></i>
+                                <h3>مدت محدود</h3>
+                                <p class="p-box-container">این جشنواره تنها 30 روز ادامه دارد! همین حالا اقدام کنید تا از تخفیف‌ها و جوایز ویژه بهره‌مند شوید.</p>
+                                <i class="fas fa-chevron-down"></i>
+                                </a>
+                            </div>
+                            
+                            <div class="box-container">
+                                <a href="#about">
+                                <i class="fas fa-gift"></i>
+                                <h3>خرید موفق</h3>
+                                <p class="p-box-container">با اعتماد بیش از یک میلیون کاربر به XDGBIT، ما مفتخریم که پلتفرمی قابل اعتماد برای معاملات امن و سریع شما فراهم کرده‌ایم. به جمع مشتریان راضی ما بپیوندید!</p>
+                                <i class="fas fa-chevron-down"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <img src="sh2.png" alt="" class="img_slide">
+                    <div class="col2">
+                        <img src="chatr.png" alt="" class="img-container">
+                    </div>
                 </div>
-                <div class="row-shlide1">
-                    <div class="box-text2">
-                        <h1>معامله بدون کار مزد!</h1>
-                        <p>جشن ۹ سال فعالیت موفق XDGBIT با ارائه جوایز ویژه، تخفیف‌ها و رویدادهای تعاملی برای قدردانی از جامعه بزرگمان.</p>
-                    </div>
-                    <div class="box-text2">
-                        <h1>جوایز ویژه!</h1>
-                        <p>جشن ۹ سال فعالیت موفق XDGBIT با ارائه جوایز ویژه، تخفیف‌ها و رویدادهای تعاملی برای قدردانی از جامعه بزرگمان.</p>
-                    </div>
-                    <div class="box-text2">
-                        <h1>مدت زمان محدود</h1>
-                        <p>جشن ۹ سال فعالیت موفق XDGBIT با ارائه جوایز ویژه، تخفیف‌ها و رویدادهای تعاملی برای قدردانی از جامعه بزرگمان.</p>
-                    </div>
-                </div>
+                
                 
                 
                 
@@ -91,56 +130,147 @@
             <div class="dot"></div>
         </div> -->
     </section>
-
+    <!-- <div style="height: 200px;"></div> -->
+    
     <!-- درباره ما -->
-    <section id="about" class="about fade-in-up" style="margin-bottom: 50px;">
-        <h2>درباره جشنواره ۹ سالگی</h2>
-        <p>جشن ۹ سال فعالیت موفق XDGBIT با ارائه جوایز ویژه، تخفیف‌ها و رویدادهای تعاملی برای قدردانی از جامعه بزرگمان.</p>
-        <div class="cards">
-            <div class="card">
-                <i class="fas fa-gift"></i>
-                <h3>جوایز ویژه</h3>
-                <p>هدیه توکن SHIB برای 250 کاربر جدید و مسابقات با جوایز متنوع.</p>
+    <section id="about" class="about fade-in-up" style="margin-bottom: 50px;height: 100vh;overflow: auto;">
+        <div class="box-title-ques">
+            <h1 class="text-ques">درباره جشنواره ۹ سالگی XDGBIT</h1>
+            <!-- <p style="font-size: 18px; color: #666; text-align: center; margin-top: 10px;">هر آنچه باید درباره این رویداد هیجان‌انگیز بدانید!</p> -->
+        </div>
+        <div class="accordion1" style="width: 80%; margin: auto; margin-top: 35px;">
+            <!-- سوال ۱ -->
+            <div class="faq-item">
+                <div class="faq-question"><span>معامله بدون کارمزد!</span> <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">
+                    <div style="display: flex; gap: 20px;">
+                        <div style="flex: 1; padding: 10px;">
+                            <img src="ques1.png" alt="معامله بدون کارمزد" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+                        </div>
+                        <div style="flex: 2; padding: 10px;">
+                            <h3 style="color: #1c90ff; margin-bottom: 10px;">معاملات بدون هزینه، فرصتی بی‌نظیر!</h3>
+                            <p>در جشنواره ۹ سالگی XDGBIT، از <b>معاملات بدون کارمزد</b> برای جفت‌ارزهای محبوب لذت ببرید:</p>
+                            <ul style="list-style-type: none; padding-right: 20px;">
+                                <li><i class="fas fa-check-circle" style="color: #28a745; margin-left: 10px;"></i> جفت‌ارزهای <b>BTC/USDT</b>، <b>ETH/USDT</b> و <b>SHIB/USDT</b></li>
+                                <li><i class="fas fa-check-circle" style="color: #28a745; margin-left: 10px;"></i> بدون هیچ هزینه اضافی</li>
+                                <li><i class="fas fa-check-circle" style="color: #28a745; margin-left: 10px;"></i> مناسب برای <u>کاربران جدید و حرفه‌ای</u></li>
+                            </ul>
+                            <p style="margin-top: 10px;">همین حالا شروع کنید و از این فرصت استثنایی بهره‌مند شوید!</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <i class="fas fa-clock"></i>
-                <h3>مدت محدود</h3>
-                <p>فقط ۹ روز برای بهره‌مندی از این فرصت استثنایی.</p>
+            <!-- سوال ۲ -->
+            <div class="faq-item">
+                <div class="faq-question"><span>تا چه زمانی؟</span> <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">
+                    <div style="display: flex; gap: 20px;">
+                        <div style="flex: 1; padding: 10px;">
+                            <img src="ques2.jpg" alt="مدت زمان جشنواره" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+                        </div>
+                        <div style="flex: 2; padding: 10px;">
+                            <h3 style="color: #1c90ff; margin-bottom: 10px;">فرصتی محدود تا پایان جشنواره!</h3>
+                            <p>جشنواره ۹ سالگی XDGBIT فقط برای <b>۳۰ روز</b> ادامه دارد. این فرصت طلایی را از دست ندهید:</p>
+                            <ul style="list-style-type: none; padding-right: 20px;">
+                                <li><i class="fas fa-clock" style="color: #28a745; margin-left: 10px;"></i> <b>شروع:</b> از امروز</li>
+                                <li><i class="fas fa-clock" style="color: #28a745; margin-left: 10px;"></i> <b>پایان:</b> ۳۰ روز دیگر</li>
+                                <li><i class="fas fa-clock" style="color: #28a745; margin-left: 10px;"></i> <u>جوایز و تخفیف‌ها فقط در این مدت!</u></li>
+                            </ul>
+                            <p style="margin-top: 10px;">عجله کنید و همین حالا به جمع شرکت‌کنندگان بپیوندید!</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>امنیت تضمین‌شده</h3>
-                <p>با ۹ سال تجربه و فناوری پیشرفته، امنیت شما اولویت ماست.</p>
+            <!-- سوال ۳ -->
+            <div class="faq-item">
+                <div class="faq-question"><span>نحوه شرکت در جشنواره!</span> <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">
+                    <div style="display: flex; gap: 20px;">
+                        <div style="flex: 1; padding: 10px;">
+                            <img src="ques3.jpg" alt="نحوه شرکت" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+                        </div>
+                        <div style="flex: 2; padding: 10px;">
+                            <h3 style="color: #1c90ff; margin-bottom: 10px;">چگونه در جشنواره شرکت کنید؟</h3>
+                            <p>شرکت در جشنواره ۹ سالگی XDGBIT آسان است. کافیست این مراحل را دنبال کنید:</p>
+                            <ul style="list-style-type: none; padding-right: 20px;">
+                                <li><i class="fas fa-user-plus" style="color: #28a745; margin-left: 10px;"></i> <b>ثبت‌نام:</b> حساب کاربری خود را در XDGBIT ایجاد کنید.</li>
+                                <li><i class="fas fa-id-card" style="color: #28a745; margin-left: 10px;"></i> <b>احراز هویت:</b> فرآیند KYC را تکمیل کنید.</li>
+                                <li><i class="fas fa-exchange-alt" style="color: #28a745; margin-left: 10px;"></i> <b>معامله:</b> حداقل یک معامله با جفت‌ارزهای مشخص انجام دهید.</li>
+                                <li><i class="fas fa-trophy" style="color: #28a745; margin-left: 10px;"></i> <b>مسابقات:</b> در رویدادهای جانبی شرکت کنید.</li>
+                            </ul>
+                            <p style="margin-top: 10px;">با این مراحل، شانس <u>برنده شدن جوایز ویژه</u> را خواهید داشت!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- سوال ۴ -->
+            <div class="faq-item">
+                <div class="faq-question"><span>هدیه کی پرداخت می‌شود؟</span> <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">
+                    <div style="display: flex; gap: 20px;">
+                        <div style="flex: 1; padding: 10px;">
+                            <img src="4.jpg" alt="زمان پرداخت هدیه" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+                        </div>
+                        <div style="flex: 2; padding: 10px;">
+                            <h3 style="color: #1c90ff; margin-bottom: 10px;">زمان دریافت جوایز شما</h3>
+                            <p>جوایز جشنواره به سرعت به حساب شما واریز می‌شود:</p>
+                            <ul style="list-style-type: none; padding-right: 20px;">
+                                <li><i class="fas fa-gift" style="color: #28a745; margin-left: 10px;"></i> پس از <b>تکمیل احراز هویت (KYC)</b></li>
+                                <li><i class="fas fa-gift" style="color: #28a745; margin-left: 10px;"></i> بعد از انجام <b>حداقل یک معامله</b></li>
+                                <li><i class="fas fa-gift" style="color: #28a745; margin-left: 10px;"></i> توکن‌های <u>SHIB</u> و سایر جوایز در پایان جشنواره توزیع می‌شوند.</li>
+                            </ul>
+                            <p style="margin-top: 10px;">با شرکت به موقع، جوایز خود را تضمین کنید!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- سوال ۵ -->
+            <div class="faq-item">
+                <div class="faq-question"><span>درباره XDGBIT</span> <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">
+                    <div style="display: flex; gap: 20px;">
+                        <div style="flex: 1; padding: 10px;">
+                            <img src="ques5.jpg" alt="درباره XDGBIT" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+                        </div>
+                        <div style="flex: 2; padding: 10px;">
+                            <h3 style="color: #1c90ff; margin-bottom: 10px;">XDGBIT: همراه قابل اعتماد شما</h3>
+                            <p>ما در XDGBIT با افتخار ۹ سال فعالیت موفق را جشن می‌گیریم:</p>
+                            <ul style="list-style-type: none; padding-right: 20px;">
+                                <li><i class="fas fa-star" style="color: #28a745; margin-left: 10px;"></i> <b>بیش از ۱ میلیون معامله موفق</b></li>
+                                <li><i class="fas fa-star" style="color: #28a745; margin-left: 10px;"></i> خدمات در <b>بیش از ۱۰ کشور</b></li>
+                                <li><i class="fas fa-star" style="color: #28a745; margin-left: 10px;"></i> تیمی متشکل از <b>۵۰+ متخصص</b></li>
+                                <li><i class="fas fa-star" style="color: #28a745; margin-left: 10px;"></i> پلتفرمی <u>امن و سریع</u> برای معاملات شما</li>
+                            </ul>
+                            <p style="margin-top: 10px;">به ما بپیوندید و تجربه‌ای متفاوت از معاملات دیجیتال داشته باشید!</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- آمار -->
     <section id="stats" class="stats fade-in-up">
-        <h2 class="h2-das">دستاوردها در <span style="padding-right: 12px ;padding-left: 12px; padding-top: 0.5px; padding-bottom: 0.5px;  color:rgb(28, 210, 255) ;border-radius: 5px;font-size: 50px;"><i class="fa-solid fa-9"></i></span> سال</h2>
-        <p style="font-size: 24px; color: rgb(101, 154, 252);font-weight: bolder;">نگاهی به موفقیت‌های بزرگ <span style="color:#751515 ;background-color: white;padding-right: 12px ;padding-left: 12px; padding-top: 0.5px; padding-bottom: 0.5px;border-radius: 5px;box-shadow: 0px 2px 5px rgb(255, 180, 180);">XDGBIT</span></p>
+        <h2 class="h2-das">دستاوردها در <span style="padding-right: 12px ;padding-left: 12px; padding-top: 0.5px; padding-bottom: 0.5px;  color:rgb(255, 255, 255) ;border-radius: 5px;font-size: 50px;">9</span> سال</h2>
+        <p style="font-size: 24px; color: rgb(101, 154, 252);font-weight: bolder;">نگاهی به موفقیت‌های بزرگ XDGBIT</p>
         <div class="grid">
             <div class="stat-item">
-                <span class="number" data-target="9">0</span>
-                سال تجربه
-            </div>
-            <div class="stat-item">
                 <span class="number" data-target="50">0</span>
-                + عضو تیم
-            </div>
-            <div class="stat-item">
-                <span class="number" data-target="100000">0</span>
-                + مشتری
+                <span style="font-size: 30px; font-weight: bolder;"><span style="font-size: 52px;">+</span> عضو تیم جدید</span>
             </div>
             <div class="stat-item">
                 <span class="number" data-target="10">0</span>
-                + کشور فعال
+                <span style="font-size: 30px; font-weight: bolder;"><span style="font-size: 52px;">+</span> هزار مشتریان</span>
+            </div>
+            <div class="stat-item">
+                <span class="number" data-target="1">0</span>
+                <span style="font-size: 30px; font-weight: bolder;"><span style="font-size: 52px;">+</span> میلیون معامله موفق</span>
             </div>
         </div>
     </section>
 
     <!-- خدمات برتر -->
-    <section id="services" class="services fade-in-up" style="margin-top: 0px;">
+    <!-- <section id="services" class="services fade-in-up" style="margin-top: 0px;">
         <h2>نحوه شرکت در جشنواره</h2>
         <p>مراحل ساده برای بهره‌مندی از جوایز و تخفیف‌ها.</p>
         <div class="grid">
@@ -176,7 +306,7 @@
                 <button onclick="scrollToSection('contact')">تماس با ما</button>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- اخبار -->
     <section id="news" class="news fade-in-up" style="margin-top: 250px;">
@@ -219,7 +349,7 @@
     </section>
 
     <!-- سوالات متداول -->
-    <section id="faq" class="faq fade-in-up">
+    <!-- <section id="faq" class="faq fade-in-up">
         <h2>سوالات متداول جشنواره</h2>
         <p></p>
         <div class="accordion">
@@ -236,18 +366,18 @@
                 <div class="faq-answer"><p>فقط 250 نفر اول در ایردراپ شرکت می‌کنند.</p></div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- تماس -->
     <section id="contact" class="contact fade-in-up">
-        <h2>با ما در ارتباط باشید</h2>
+        <!-- <h2>با ما در ارتباط باشید</h2>
         <p>برای سؤالات یا حمایت، با ما تماس بگیرید.</p>
         <form>
             <input type="text" placeholder="نام شما" style="font-family: 'Vazirmatn', sans-serif;">
             <input type="email" placeholder="ایمیل شما" style="font-family: 'Vazirmatn', sans-serif;">
             <textarea placeholder="پیام شما" style="font-family: 'Vazirmatn', sans-serif;"></textarea>
             <button type="submit">ارسال</button>
-        </form>
+        </form> -->
         <div class="contact-info">
             <div class="contact-item">
                 <i class="fas fa-map-marker-alt"></i>
@@ -265,7 +395,7 @@
     </section>
 
     <!-- فوتر -->
-    <footer>
+    <!-- <footer>
         <div class="footer-content">
             <div class="footer-logo">
                 <img src="xdgbit.png" alt="لوگو XDGBIT" class="logo-footer">
@@ -297,7 +427,7 @@
             </div>
         </div>
         <p>&copy; ۲۰۲۵ XDGBIT. همه حقوق محفوظ است.</p>
-    </footer>
+    </footer> -->
 
     <script>
         // تغییر هدر هنگام اسکرول
@@ -427,7 +557,27 @@
 
         bg2.style.backgroundPosition = `${x}% ${y}%`;
         });
+        function toggleFloatingMenu() {
+        const menu = document.querySelector('.floating-bar-menu');
+        const button = document.querySelector('.floating-menu-btn');
+        menu.classList.toggle('active');
+        button.classList.toggle('active');
+    }
 
+        // اسکرول نرم برای لینک‌های داخلی
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            toggleFloatingMenu(); // بستن منو پس از کلیک
+        }
+
+        // افزودن رویداد به لینک‌های داخلی
+        document.querySelectorAll('.floating-bar-menu a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const id = link.getAttribute('href').substring(1);
+                scrollToSection(id);
+            });
+        });
     </script>
 </body>
 </html>
