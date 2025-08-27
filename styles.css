@@ -249,6 +249,7 @@ nav ul li a:hover {
     margin: auto;
 }
 .box-text1 {
+    width: 40%;
     text-align: center;
     margin: 60px 0;
     font-family: LaleZar;
@@ -362,10 +363,7 @@ nav ul li a:hover {
 }
 
 .slide.s1::before {
-    background-image: linear-gradient(
-        rgba(30, 58, 138, 0.4),
-        rgba(59, 130, 246, 0.4)
-    ), url('slide2.png');
+    background-image: linear-gradient(to top right , #204f9b, #39c09e);
     width: 100vw;
     height: 100vh;
 }
