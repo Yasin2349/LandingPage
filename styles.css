@@ -378,7 +378,7 @@ nav ul li a:hover {
     z-index: 3;
     animation: fadeInUp 1s ease-out 0.2s;
 }
-.fa-gift, .fa-shield-alt , .fa-clock{
+.fa-gift, .fa-shield-alt , .fa-clock ,.fa-cart-arrow-down{
     font-size: 35px;
     color: rgb(0, 110, 255);
 }
@@ -1456,6 +1456,8 @@ footer p {
         height: auto;
     }
     .text-ques {
+        position: absolute;
+        top: 0%;
         font-size: 32px;
         padding: 15px 30px;
     }
@@ -1601,6 +1603,7 @@ footer p {
         padding: 20px 10px;
         margin-bottom: 30px;
         height: auto;
+        position: relative;
     }
     .text-ques {
         font-size: 24px;
