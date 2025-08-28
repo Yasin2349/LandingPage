@@ -59,7 +59,9 @@
             <div class="slide s1 active">
                 <div class="box_container">
                     <div class="col1">
+                        <img src="public/" alt="" style="width: 45%;" class="img1">
                         <div class="display">
+                            
                             <div class="display2">
                                 <h2 class="title_container">
                                 جشنواره ۹ سالگی XDGBIT: شانس برنده شدن جوایز بزرگ!
@@ -68,10 +70,18 @@
                                     به جشن ۹ سال فعالیت موفق XDGBIT بپیوندید! با ثبت‌نام، معامله و شرکت در مسابقات، از جوایز ویژه مثل توکن‌های SHIB و معاملات بدون کارمزد بهره‌مند شوید. این فرصت محدود را از دست ندهید!
                                 </h2>
                             </div>
-                            <img src="chatr.png" alt="" class="img-container2">
+                            
                         </div>
                         
                         <div class="row-box-container">
+                            <div class="box-container">                
+                                <a href="#about">
+                                <i class="fas fa-gift"></i>
+                                <h3>جوایز ارزنده برای شما</h3>
+                                <p class="p-box-container">در جشنواره ۹ سالگی XDGBIT، با ثبت‌نام و شرکت در رویدادها، شانس برنده شدن توکن‌های SHIB و جوایز متنوع دیگر را برای ۲۵۰ نفر اول به دست آورید.</p>
+                                <i class="fas fa-chevron-down"></i>
+                                </a>
+                            </div>
                             <div class="box-container">                
                                 <a href="#about">
                                 <i class="fas fa-gift"></i>
@@ -314,6 +324,13 @@
         <p>به‌روزترین اطلاعات درباره رویداد ۹ سالگی.</p>
         <div class="news-grid">
             <div class="news-item">
+                <img src="4.jpg" alt="شروع جشنواره">
+                <div class="content">
+                    <h3>جشنواره ۹ سالگی آغاز شد</h3>
+                    <p>رویداد با جوایز ویژه برای 250 کاربر جدید شروع شد...</p>
+                </div>
+            </div>
+            <div class="news-item">
                 <img src="BOX3.png" alt="شروع جشنواره">
                 <div class="content">
                     <h3>جشنواره ۹ سالگی آغاز شد</h3>
@@ -379,18 +396,25 @@
             <button type="submit">ارسال</button>
         </form> -->
         <div class="contact-info">
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <p>مشهد، ایران</p>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-phone-alt"></i>
-                <p>09393010899</p>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <p>support@xdgbit.com</p>
-            </div>
+            <a href="#">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>مشهد، ایران</p>
+                </div>
+            </a>
+            <a href="tel:+09393010899">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <p>09393010899</p>
+                </div>
+            </a>
+            <a href="mailto:support@xdgbit.com?subject=سلام&body=متن پیام شما">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>support@xdgbit.com</p>
+                </div>
+            </a>
+            
         </div>
     </section>
 
@@ -430,154 +454,210 @@
     </footer> -->
 
     <script>
-        // تغییر هدر هنگام اسکرول
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) header.classList.add('scrolled');
-            else header.classList.remove('scrolled');
-        });
+const aboutSection = document.getElementById('about');
+const faqItems = document.querySelectorAll('.faq-item');
+let hasSnapped = false;
+let currentIndex = -1;
 
-        // اسلایدر هیرو
-        const heroSlider = document.getElementById('hero-slider');
-        const slides = document.querySelectorAll('.slide');
-        const heroDots = document.querySelectorAll('#hero-dots .dot');
-        let currentSlide = 0;
-        let isSliding = false;
+// Observer for snapping the section to center when it comes into view
+const sectionObserver = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !hasSnapped) {
+    hasSnapped = true;
+    aboutSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Open first FAQ after snapping
+    setTimeout(() => {
+      if (faqItems.length > 0 && currentIndex === -1) {
+        openFAQ(0);
+      }
+    }, 500); // Delay to allow smooth scroll to complete
+  }
+}, { threshold: 0.1 });
 
-        // function showSlide(index) {
-        //     if (isSliding) return;
-        //     isSliding = true;
+sectionObserver.observe(aboutSection);
 
-        //     slides[currentSlide].classList.remove('active');
-        //     heroDots[currentSlide].classList.remove('active');
-
-        //     currentSlide = (index + slides.length) % slides.length;
-
-        //     slides[currentSlide].classList.add('active');
-        //     heroDots[currentSlide].classList.add('active');
-
-        //     const slideContent = slides[currentSlide].querySelectorAll('h1, p, button');
-        //     slideContent.forEach(el => {
-        //         el.style.animation = 'none';
-        //         el.offsetHeight;
-        //         el.style.animation = null;
-        //     });
-
-        //     setTimeout(() => {
-        //         isSliding = false;
-        //     }, 800);
-        // }
-
-        // heroDots.forEach((dot, i) => {
-        //     dot.addEventListener('click', () => {
-        //         if (i !== currentSlide) showSlide(i);
-        //     });
-        // });
-
-        // setInterval(() => {
-        //     showSlide(currentSlide + 1);
-        // }, 5000);
-
-        // کانتر آمار
-        const numbers = document.querySelectorAll('.number');
-        numbers.forEach(number => {
-            const target = +number.dataset.target;
-            let count = 0;
-            const increment = target / 200;
-            const updateCount = () => {
-                if (count < target) {
-                    count += increment;
-                    number.textContent = Math.ceil(count);
-                    requestAnimationFrame(updateCount);
-                } else number.textContent = target;
-            };
-            const observer = new IntersectionObserver(entries => {
-                if (entries[0].isIntersecting) updateCount();
-            });
-            observer.observe(number);
-        });
-
-        // آکاردئون FAQ
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            item.querySelector('.faq-question').addEventListener('click', () => item.classList.toggle('active'));
-        });
-
-        // منوی همبرگر
-        function toggleMenu() {
-            const navMenu = document.getElementById('nav-menu');
-            const menuIcon = document.getElementById('menu-icon');
-            navMenu.classList.toggle('active');
-            menuIcon.classList.toggle('fa-bars');
-            menuIcon.classList.toggle('fa-times');
-        }
-
-        // اسکرول نرم
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-            const navMenu = document.getElementById('nav-menu');
-            if (navMenu.classList.contains('active')) toggleMenu();
-        }
-
-        // انیمیشن fade-in-up
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('fade-in-up');
-            });
-        }, { threshold: 0.2 });
-        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
-
-        // فلگ گوگل
-        window.addEventListener('load', () => {
-            const referrer = document.referrer;
-            if (referrer.includes('google.com')) {
-                localStorage.setItem('from_google_search', 'true');
-                console.log('کاربر از سرچ گوگل وارد شده');
-            }
-        });
-        const bg = document.querySelector('.slide.s1');
-        const bg1 = document.querySelector('.slide.s1');
-        const bg2 = document.querySelector('.slide.s1');
-
-        document.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth) * 100;
-        const y = (e.clientY / window.innerHeight) * 100;
-
-        bg.style.backgroundPosition = `${x}% ${y}%`;
-        });
-        document.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth) * 100;
-        const y = (e.clientY / window.innerHeight) * 100;
-
-        bg1.style.backgroundPosition = `${x}% ${y}%`;
-        });
-        document.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth) * 100;
-        const y = (e.clientY / window.innerHeight) * 100;
-
-        bg2.style.backgroundPosition = `${x}% ${y}%`;
-        });
-        function toggleFloatingMenu() {
-        const menu = document.querySelector('.floating-bar-menu');
-        const button = document.querySelector('.floating-menu-btn');
-        menu.classList.toggle('active');
-        button.classList.toggle('active');
+// Function to open a specific FAQ and close others
+function openFAQ(index) {
+  if (index < 0 || index >= faqItems.length) return;
+  
+  faqItems.forEach((item, i) => {
+    if (i === index) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
     }
+  });
+  
+  currentIndex = index;
+  checkIfAllOpen();
+}
 
-        // اسکرول نرم برای لینک‌های داخلی
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-            toggleFloatingMenu(); // بستن منو پس از کلیک
-        }
+// Function to check if at the last FAQ to free scroll
+function checkIfAllOpen() {
+  // Since we open one by one, "all open" means we've reached the last one
+  // But per request, after last is open, allow scroll
+  // No need for all open check, just if currentIndex == last, allow scroll down
+}
 
-        // افزودن رویداد به لینک‌های داخلی
-        document.querySelectorAll('.floating-bar-menu a[href^="#"]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const id = link.getAttribute('href').substring(1);
-                scrollToSection(id);
-            });
-        });
+// Initially set section to full viewport and overflow auto but control wheel
+aboutSection.style.height = '100vh';
+aboutSection.style.overflow = 'hidden'; // Initially hidden to prevent internal scroll
+
+// Handle wheel event to navigate FAQs
+aboutSection.addEventListener('wheel', (e) => {
+  e.preventDefault(); // Always prevent default to control behavior
+  
+  if (e.deltaY > 0) { // Scroll down
+    if (currentIndex < faqItems.length - 1) {
+      openFAQ(currentIndex + 1);
+      // No scroll, just open next
+    } else {
+      // At last, allow scroll down by scrolling the body
+      window.scrollBy(0, e.deltaY);
+    }
+  } else if (e.deltaY < 0) { // Scroll up
+    if (currentIndex > 0) {
+      openFAQ(currentIndex - 1);
+    } else {
+      // At first, allow scroll up
+      window.scrollBy(0, e.deltaY);
+    }
+  }
+}, { passive: false });
+
+// To handle touch devices, add touch events
+let lastTouchY = 0;
+let accumulatedDelta = 0;
+const scrollThreshold = 200; // Larger threshold for less sensitivity on mobile
+
+aboutSection.addEventListener('touchstart', (e) => {
+  lastTouchY = e.touches[0].clientY;
+  accumulatedDelta = 0;
+});
+
+aboutSection.addEventListener('touchmove', (e) => {
+  e.preventDefault(); // Default prevent, manual handle
+  const currentTouchY = e.touches[0].clientY;
+  const delta = lastTouchY - currentTouchY; // Positive for scroll down
+  accumulatedDelta += delta;
+  lastTouchY = currentTouchY;
+
+  if (delta > 0) { // Scrolling down
+    if (currentIndex < faqItems.length - 1) {
+      while (accumulatedDelta >= scrollThreshold) {
+        openFAQ(currentIndex + 1);
+        accumulatedDelta -= scrollThreshold;
+      }
+    } else {
+      window.scrollBy(0, delta);
+    }
+  } else if (delta < 0) { // Scrolling up
+    if (currentIndex > 0) {
+      while (accumulatedDelta <= -scrollThreshold) {
+        openFAQ(currentIndex - 1);
+        accumulatedDelta += scrollThreshold;
+      }
+    } else {
+      window.scrollBy(0, delta);
+    }
+  }
+}, { passive: false });
+
+// When all are navigated (at last), change overflow to auto if needed, but since we control wheel, no need
+
+// Reset flag
+window.addEventListener('beforeunload', () => {
+  hasSnapped = false;
+});
+
+// تغییر هدر هنگام اسکرول
+window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+});
+
+// کانتر آمار
+const numbers = document.querySelectorAll('.number');
+numbers.forEach(number => {
+    const target = +number.dataset.target;
+    let count = 0;
+    const increment = target / 200;
+    const updateCount = () => {
+        if (count < target) {
+            count += increment;
+            number.textContent = Math.ceil(count);
+            requestAnimationFrame(updateCount);
+        } else number.textContent = target;
+    };
+    const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) updateCount();
+    });
+    observer.observe(number);
+});
+
+// منوی همبرگر
+function toggleMenu() {
+    const navMenu = document.getElementById('nav-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    navMenu.classList.toggle('active');
+    menuIcon.classList.toggle('fa-bars');
+    menuIcon.classList.toggle('fa-times');
+}
+
+// اسکرول نرم
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    const navMenu = document.getElementById('nav-menu');
+    if (navMenu.classList.contains('active')) toggleMenu();
+}
+
+// انیمیشن fade-in-up
+const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('fade-in-up');
+    });
+}, { threshold: 0.2 });
+document.querySelectorAll('.fade-in-up').forEach(el => fadeObserver.observe(el));
+
+// فلگ گوگل
+window.addEventListener('load', () => {
+    const referrer = document.referrer;
+    if (referrer.includes('google.com')) {
+        localStorage.setItem('from_google_search', 'true');
+        console.log('کاربر از سرچ گوگل وارد شده');
+    }
+});
+
+// افکت پس‌زمینه برای اسلایدها
+const bg = document.querySelector('.slide.s1');
+const bg1 = document.querySelector('.slide.s1');
+const bg2 = document.querySelector('.slide.s1');
+
+document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth) * 100;
+    const y = (e.clientY / window.innerHeight) * 100;
+    bg.style.backgroundPosition = `${x}% ${y}%`;
+    bg1.style.backgroundPosition = `${x}% ${y}%`;
+    bg2.style.backgroundPosition = `${x}% ${y}%`;
+});
+
+// منوی شناور
+function toggleFloatingMenu() {
+    const menu = document.querySelector('.floating-bar-menu');
+    const button = document.querySelector('.floating-menu-btn');
+    menu.classList.toggle('active');
+    button.classList.toggle('active');
+}
+
+// اسکرول نرم برای لینک‌های داخلی
+document.querySelectorAll('.floating-bar-menu a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = link.getAttribute('href').substring(1);
+        scrollToSection(id);
+    });
+});
     </script>
 </body>
 </html>

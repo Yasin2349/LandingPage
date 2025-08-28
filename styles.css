@@ -345,7 +345,7 @@ nav ul li a:hover {
     margin-top: 35px;
 }
 .box-container{
-    width: 30%;
+    width: 23%;
     height: 280px;
     background-color: white;
     box-shadow: 0px 12px 36px rgb(228, 228, 228);
@@ -357,6 +357,8 @@ nav ul li a:hover {
     flex-direction: column;
     transition: all ease 0.3s;
     cursor: pointer;
+    margin-top: 15px;
+    padding-top: 5px;
 }
 .box-container a{
     display: flex;
@@ -379,7 +381,7 @@ nav ul li a:hover {
     animation: fadeInUp 1s ease-out 0.2s;
 }
 .fa-gift, .fa-shield-alt , .fa-clock ,.fa-cart-arrow-down{
-    font-size: 35px;
+    font-size: 30px;
     color: rgb(0, 110, 255);
 }
 
@@ -994,6 +996,7 @@ nav ul li a:hover {
     overflow: hidden;
     box-shadow: 0 6px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 .news-item:hover {
@@ -1056,60 +1059,59 @@ nav ul li a:hover {
 
 /* سوالات متداول */
 .faq {
-    padding: 80px 40px; /* کاهش padding */
-    background: #f9fafb;
-    text-align: center;
-}
-
-.faq .accordion {
-    max-width: 800px; /* کاهش عرض */
-    margin: 40px auto 0; /* کاهش margin */
+  max-width: 800px;
+  margin: 40px auto;
+  font-family: sans-serif;
 }
 
 .faq-item {
-    background: white;
-    border-radius: 10px;
-    margin-bottom: 10px; /* کاهش margin */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    overflow: hidden;
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  overflow: hidden;
 }
 
 .faq-question {
-    padding: 15px 20px; /* کاهش padding */
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 16px; /* کاهش اندازه فونت */
-    font-weight: 500;
-    color: #1e3a8a;
-    background: #f1f5f9;
-    transition: background 0.3s ease;
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f1f5f9;
+  font-weight: 500;
+  transition: background 0.3s ease;
 }
 
 .faq-question:hover {
-    background: #e0e7ff;
+  background: #e0e7ff;
 }
 
 .faq-answer {
-    padding: 15px 20px; /* کاهش padding */
-    display: none;
-    font-size: 15px; /* کاهش اندازه فونت */
-    color: #64748b;
-    background: #ffffff;
+  max-height: 0;
+  opacity: 0;
+  padding: 0 20px;
+  font-size: 15px;
+  color: #64748b;
+  display: block;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
 }
 
 .faq-item.active .faq-answer {
-    display: block;
-}
-
-.faq-item.active .faq-question i {
-    transform: rotate(180deg);
+  opacity: 1;
+  padding: 15px 20px;
+  max-height: 370px;
 }
 
 .faq-question i {
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+
 
 /* تماس */
 .contact {
@@ -1157,6 +1159,7 @@ nav ul li a:hover {
     padding: 12px; /* کاهش padding */
     border-radius: 8px;
     width: 160px; /* کاهش عرض */
+
 }
 
 .contact-item i {
@@ -1166,7 +1169,8 @@ nav ul li a:hover {
 }
 
 .contact-item p {
-    font-size: 13px; /* کاهش اندازه فونت */
+    font-size: 18px; /* کاهش اندازه فونت */
+    font-weight: bolder;
     color: #64748b;
 }
 
@@ -1317,7 +1321,9 @@ footer p {
 .prev-slide:hover, .next-slide:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
-
+.img1{
+    display: none;
+}
 /* ریسپانسیو */
 @media (max-width: 768px) {
     .menu-toggle {
@@ -1447,7 +1453,9 @@ footer p {
         font-size: 14px;
         padding: 10px 15px;
     }
-
+    .hero{
+        margin-top: 100vh;
+    }
     /* درباره */
     .about {
         margin-top: 90vh;
@@ -1716,7 +1724,7 @@ footer p {
         width: 28%;
         height: 220px;
     }
-    .fas.fa-gift{
+    .fas.fa-gift, .fa-shield-alt , .fa-clock ,.fa-cart-arrow-down{
         font-size: 21px !important;
     }
     .p-box-container{
@@ -1755,6 +1763,9 @@ footer p {
     .col2{
         display: none;
     }
+    .img1{
+        display: block;
+    }
     .col1{
         width: 100%;
     }
@@ -1777,5 +1788,419 @@ footer p {
     }
     .text-ques{
         font-size: 20px;
+    }
+    .display2{
+        width: 90%;
+    }
+}
+
+/* ریسپانسیو برای تبلت (768px تا 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* تنظیمات کلی */
+    body {
+        font-size: 14px;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* منوی شناور */
+    .floating-menu-btn {
+        width: 55px;
+        height: 55px;
+        bottom: 25px;
+        right: 25px;
+    }
+    .floating-menu-btn i {
+        font-size: 22px;
+    }
+    .floating-bar-menu {
+        width: 190px;
+        bottom: 90px;
+        right: 25px;
+    }
+    .floating-bar-menu li {
+        font-size: 15px;
+        padding: 10px 15px;
+    }
+
+    /* هیرو و اسلایدر */
+    .hero {
+        height: 90vh;
+    }
+    .box_container {
+        width: 95%;
+        height: 85vh;
+        margin: 2.5vh auto;
+        border-radius: 12px;
+    }
+    .title_container {
+        font-size: 30px;
+        width: 90%;
+    }
+    .text_container {
+        font-size: 16px;
+        width: 90%;
+    }
+    .row-box-container {
+        gap: 15px;
+        margin-top: 25px;
+    }
+    .box-container {
+        width: 40%;
+        height: 200px;
+        margin: 10px;
+    }
+    .box-container h3 {
+        font-size: 14px;
+        margin: 5px 0;
+    }
+    .p-box-container {
+        font-size: 11px;
+        width: 85%;
+    }
+    .fa-gift, .fa-shield-alt, .fa-clock, .fa-cart-arrow-down {
+        font-size: 22px;
+    }
+    .col1, .col2 {
+        width: 50%;
+    }
+    .img-container {
+        width: 85%;
+    }
+
+    /* درباره */
+    .about {
+        margin-top: 95vh;
+        padding: 40px 20px;
+        margin-bottom: 60px;
+        height: auto;
+        width: 100%;
+    }
+    .text-ques {
+        font-size: 36px;
+        padding: 15px 35px;
+    }
+    .accordion1 {
+        width: 85%;
+        margin-top: 25px;
+    }
+    .faq-item .faq-answer div {
+        flex-direction: row;
+        gap: 15px;
+    }
+    .faq-item .faq-answer div > div {
+        flex: 1;
+    }
+    .faq-item .faq-answer img {
+        max-width: 100%;
+        height: auto;
+    }
+    .faq-question {
+        font-size: 15px;
+        padding: 12px 15px;
+    }
+    .faq-answer {
+        font-size: 14px;
+        padding: 12px 15px;
+        max-height: 400px;
+    }
+
+    /* آمار */
+    .stats {
+        padding: 50px 25px;
+    }
+    .h2-das {
+        font-size: 36px;
+    }
+    .stats p {
+        font-size: 22px;
+    }
+    .stats .grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+    }
+    .stat-item {
+        padding: 20px;
+    }
+    .stat-item .number {
+        font-size: 36px;
+    }
+    .stat-item span {
+        font-size: 15px;
+    }
+
+    /* اخبار */
+    .news {
+        padding: 50px 25px;
+        margin-top: 150px;
+    }
+    .news h2 {
+        font-size: 36px;
+    }
+    .news p {
+        font-size: 22px;
+    }
+    .news-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+    }
+    .news-item img {
+        height: 160px;
+    }
+    .news-item h3 {
+        font-size: 19px;
+    }
+    .news-item p {
+        font-size: 14px;
+    }
+
+    /* شرکا */
+    .partners {
+        padding: 50px 25px;
+    }
+    .partners h2 {
+        font-size: 36px;
+    }
+    .partners p {
+        font-size: 22px;
+    }
+    .partners .logos {
+        gap: 25px;
+        margin-top: 30px;
+    }
+    .partners img {
+        width: 110px;
+        height: 55px;
+    }
+
+    /* تماس */
+    .contact {
+        padding: 50px 25px;
+    }
+    .contact h2 {
+        font-size: 36px;
+    }
+    .contact-info {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    .contact-item {
+        width: 180px;
+        padding: 10px;
+    }
+    .contact-item p {
+        font-size: 13px;
+    }
+    .contact-item i {
+        font-size: 17px;
+    }
+}
+
+/* ریسپانسیو برای تبلت (768px تا 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* تنظیمات کلی */
+    body {
+        font-size: 14px;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* منوی شناور */
+    .floating-menu-btn {
+        width: 55px;
+        height: 55px;
+        bottom: 25px;
+        right: 25px;
+    }
+    .floating-menu-btn i {
+        font-size: 22px;
+    }
+    .floating-bar-menu {
+        width: 190px;
+        bottom: 90px;
+        right: 25px;
+    }
+    .floating-bar-menu li {
+        font-size: 15px;
+        padding: 10px 15px;
+    }
+
+    /* هیرو و اسلایدر */
+    .hero {
+        height: 90vh;
+        margin-bottom: 150px; /* افزایش فاصله پایین هیرو */
+    }
+    .box_container {
+        width: 95%;
+        height: 85vh;
+        margin: 2.5vh auto;
+        border-radius: 12px;
+    }
+    .title_container {
+        font-size: 30px;
+        width: 90%;
+    }
+    .text_container {
+        font-size: 16px;
+        width: 90%;
+    }
+    .row-box-container {
+        gap: 15px;
+        margin-top: 25px;
+    }
+    .box-container {
+        width: 40%;
+        height: 200px;
+        margin: 10px;
+    }
+    .box-container h榆
+    .box-container h3 {
+        font-size: 14px;
+        margin: 5px 0;
+    }
+    .p-box-container {
+        font-size: 11px;
+        width: 85%;
+    }
+    .fa-gift, .fa-shield-alt, .fa-clock, .fa-cart-arrow-down {
+        font-size: 22px;
+    }
+    .col1, .col2 {
+        width: 50%;
+    }
+    .img-container {
+        width: 85%;
+    }
+
+    /* درباره */
+    .about {
+        margin-top: 110vh; /* افزایش فاصله از هیرو */
+        padding: 40px 20px;
+        margin-bottom: 80px; /* افزایش فاصله پایین */
+        height: auto;
+        width: 100%;
+        position: relative;
+    }
+    .text-ques {
+        font-size: 36px;
+        padding: 15px 35px;
+    }
+    .accordion1 {
+        width: 85%;
+        margin-top: 25px;
+    }
+    .faq-item .faq-answer div {
+        flex-direction: row;
+        gap: 15px;
+    }
+    .faq-item .faq-answer div > div {
+        flex: 1;
+    }
+    .faq-item .faq-answer img {
+        max-width: 100%;
+        height: auto;
+    }
+    .faq-question {
+        font-size: 15px;
+        padding: 12px 15px;
+    }
+    .faq-answer {
+        font-size: 14px;
+        padding: 12px 15px;
+        max-height: 400px;
+    }
+
+    /* آمار */
+    .stats {
+        padding: 50px 25px;
+    }
+    .h2-das {
+        font-size: 36px;
+    }
+    .stats p {
+        font-size: 22px;
+    }
+    .stats .grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+    }
+    .stat-item {
+        padding: 20px;
+    }
+    .stat-item .number {
+        font-size: 36px;
+    }
+    .stat-item span {
+        font-size: 15px;
+    }
+
+    /* اخبار */
+    .news {
+        padding: 50px 25px;
+        margin-top: 150px;
+    }
+    .news h2 {
+        font-size: 36px;
+    }
+    .news p {
+        font-size: 22px;
+    }
+    .news-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+    }
+    .news-item img {
+        height: 160px;
+    }
+    .news-item h3 {
+        font-size: 19px;
+    }
+    .news-item p {
+        font-size: 14px;
+    }
+
+    /* شرکا */
+    .partners {
+        padding: 50px 25px;
+    }
+    .partners h2 {
+        font-size: 36px;
+    }
+    .partners p {
+        font-size: 22px;
+    }
+    .partners .logos {
+        gap: 25px;
+        margin-top: 30px;
+    }
+    .partners img {
+        width: 110px;
+        height: 55px;
+    }
+
+    /* تماس */
+    .contact {
+        padding: 50px 25px;
+    }
+    .contact h2 {
+        font-size: 36px;
+    }
+    .contact-info {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    .contact-item {
+        width: 180px;
+        padding: 10px;
+    }
+    .contact-item p {
+        font-size: 13px;
+    }
+    .contact-item i {
+        font-size: 17px;
     }
 }
